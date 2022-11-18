@@ -6,3 +6,267 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+body {
+    background-color: #fff;
+}
+.login-vh100 {
+    height: calc(100vh - 258px);
+}
+
+.container {
+    a {
+        .logo {
+            height: 100px;
+        }
+    }
+}
+
+.login-box {
+    display: inline;
+}
+
+.navi {
+    height: 120px;
+    box-shadow: none;
+    background-color: rgba(173, 168, 168, 0.877);
+}
+
+
+.nav-link {
+    font-size: 16px;
+    color: grey;
+    text-decoration: none;
+}
+
+.form-div {
+    border: 2px solid rgba(56, 55, 55, 0.747);
+    border-radius: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    box-sizing: border-box;
+    flex-direction: column;
+    margin: 50px;
+}
+
+
+.heading {
+    font-size: 34px;
+    font-weight: 500px;
+}
+
+.description {
+    font-size: 16px;
+    color: grey;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.hero-box {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.logo-box {
+    img {
+        width: 100%;
+        opacity: 0.7;
+    }
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 30px;
+    gap: 20px;
+}
+
+.footer {
+    display: flex;
+    height: 100%;
+    justify-content: space-around;
+    background-color: rgba(173, 168, 168, 0.877);
+
+    .footer-blocks {
+        padding: 15px;
+
+        .footer-element:first-child {
+            margin-right: 10px;
+        }
+    }
+
+    img {
+        height: 60px;
+    }
+
+    a {
+        transition: 0.5s;
+        transition-duration: 0.5s;
+    }
+
+    a:hover {
+        opacity: 0.4;
+    }
+}
+
+.modal-content-title {
+    color: white;
+    font-size: 24px;
+    font-weight: 500;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.modal-date {
+    color: black;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.modal-description {
+    color: black;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.modal-context {
+    background-color: grey;
+    opacity: 0.8;
+    border-radius: 10px;
+}
+
+.bg-color-grey {
+    background-color: rgba(173, 168, 168, 0.877);
+    padding: 0;
+    margin: 0;
+    opacity: 0.6;
+}
+
+.img-small-ch {
+    .image {
+        position: relative;
+        width: auto;
+        height: 150px;
+        margin: 20px;
+
+        img {
+            width: auto;
+            height: 150px;
+            position: relative;
+            z-index: 10;
+        }
+
+        label {
+            position: absolute;
+            z-index: 12;
+            top: -10px;
+            left: -10px;
+            background-color: rgba(168, 195, 206, 0.87);
+            columns: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            font-weight: bold;
+            user-select: none;
+            cursor: pointer;
+        }
+
+        [type=checkbox] {
+            display: none;
+
+            &:checked~img {
+                opacity: 0.3;
+            }
+        }
+    }
+}
+
+.mar-0 {
+    width: auto;
+}
+.map-row {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.map {
+    border: solid 2px gray;
+    border-radius: 15px;
+    .heading {
+        font-size: 20px;
+        color: grey;
+    }
+
+    .description {
+        font-size: 14px;
+        color: grey;
+    }
+}
+
+.margins {
+    margin: 50px 0 50px 0;
+}
+
+
+@media(max-width:768px) {
+    .navi {
+        height: 80px;
+    }
+
+    .image {
+        height: 400px;
+    }
+
+    .container {
+        a {
+            .logo {
+                height: 70px;
+            }
+        }
+    }
+
+    .col-3 {
+        width: auto;
+    }
+
+    .form-div {
+        margin: 0;
+    }
+
+    .navbar-collapse {
+        background-color: rgba(173, 168, 168, 0.877);
+    }
+}
+
+@media(max-width:600px) {
+    .block {
+        display: block;
+        width: 100%;
+    }
+}
+@media(max-width: 768px) {
+    .login-vh100 {
+        height: calc(100vh - 218px);
+    }
+    .mar-0 {
+        margin: 0;
+        width: auto;
+    }
+}
+@media(max-width: 542px) {
+    .login-vh100 {
+        height: calc(100vh - 278px);
+    }
+}

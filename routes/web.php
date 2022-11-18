@@ -16,12 +16,12 @@ use App\Http\Controllers\BookController as Book;
 */
 
 Route::get('/', function () {
-    return view('home');
-});
+    return view('welcome');
+})->middleware('gate:home');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('gate:home');
 Route::prefix('category')->name('c_')->group(function () {
     Route::get('/', [Category::class, 'index'])->name('index')->middleware('gate:user');
     Route::get('/create', [Category::class, 'create'])->name('create')->middleware('gate:admin');

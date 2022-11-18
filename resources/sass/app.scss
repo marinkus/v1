@@ -64,11 +64,21 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.buttons {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-}
+// .home {
+//     display: flex;
+//     flex-direction: row;
+//     width: 100%;
+//     .homelink {
+//         background-color: grey;
+//         color: azure;
+//         transition: 0.5s;
+//         transition-duration: 0.5s;
+//     }
+//     .homelink:hover {
+//         background-color: azure;
+//         color: grey;
+//     }
+// }
 
 .hero-box {
     display: flex;

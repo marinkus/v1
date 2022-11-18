@@ -16,11 +16,11 @@
                                                 <div class="buttons">
                                                     <a href="{{ route('c_show', $category) }}" class="btn btn-info">Show</a>
                                                     {{-- @if(Auth::user()->role >=10) --}}
-                                                    <a href="{{ route('c_edit', $category) }}" class="btn btn-success">Edit</a>
+                                                    <a href="{{ route('c_edit', $category) }}" @if (Auth::user()->role < 5) style="opacity: 0.4" disabled @endif class="btn btn-success">Edit</a>
                                                     <form action="{{ route('c_delete', $category) }}" method="post">
                                                         @csrf
                                                         @method('delete')
-                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                        <button @if (Auth::user()->role < 5) style="opacity: 0.4" disabled @endif type="submit" class="btn btn-danger">Delete</button>
                                                     </form>
                                                     {{-- @endif --}}
                                                 </div>

@@ -18,9 +18,9 @@
                                         @endif
                                     </div>
                                     <div class="buttons">
-                                        <a href="{{ route('b_show', $book) }}" type="button" class="btn btn-info">Show
+                                        <a href="{{ route('b_show', $book) }}" @if (Auth::user()->role < 5) style="opacity: 0.4" disabled @endif type="button" class="btn btn-info">Show
                                             info</a>
-                                        <a href="{{ route('b_edit', $book) }}" type="button" class="btn btn-warning">Edit
+                                        <a href="{{ route('b_edit', $book) }}" @if (Auth::user()->role < 5) style="opacity: 0.4" disabled @endif type="button" class="btn btn-warning">Edit
                                             info</a>
                                         <form action="{{ route('b_delete', $book) }}" method="post">
                                             @method('delete')

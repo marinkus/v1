@@ -38,11 +38,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required|min:3|max:20'
+        ]);
+
         Category::create([
             'title' => $request->title,
         ]);
 
-        return redirect()->route('c_index');
+        return redirect()->route('c_index')->with('ok', 'Category created!');
     }
 
     /**
@@ -80,10 +84,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+        $request->validate([
+            'title' => 'required|min:3|max:20'
+        ]);
+
         $category->update([
             'title' => $request->title
         ]);
-        return redirect()->route('c_index');
+        return redirect()->route('c_index')->with('ok', 'Category updated!');
     }
 
     /**
@@ -100,13 +108,13 @@ class CategoryController extends Controller
         }
 
         $category->delete();
-        return redirect()->route('c_index');
+        return redirect()->route('c_index')->with('ok', 'Category deleted!');
     }
     public function destroyAll(Category $category)
     {
 
         $ids = $category->getBooks()->pluck('id')->all();
         Book::destroy($ids);
-        return redirect()->route('c_index');
+        return redirect()->route('c_index')->with('ok', 'All books deleted!');
     }
 }

@@ -41,6 +41,20 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate(
+            [
+                'title' => 'required|min:3|max:40',
+                'description' => 'required|min:15|max:500',
+                'isbn' => 'required|min:13|max:20',
+                'pages' => 'required|min:1|max:5000',
+                'photo.*' => 'sometimes|required|mimes:jpg|max:10000',
+                'category_id' => 'required|numeric|gt:0',
+            ],
+            [
+                'category_id.gt' => 'Category not chosen.'
+            ]
+        );
+
         Book::create([
             'title' => $request->title,
             'isbn' => $request->isbn,
@@ -49,7 +63,7 @@ class BookController extends Controller
             'category_id' => $request->category_id
         ])->addImages($request->file('photo'));
 
-        return redirect()->route('b_index')->with('ok', 'All Good!');
+        return redirect()->route('b_index')->with('ok', 'Book successfuly added!');
     }
 
     /**
@@ -88,6 +102,20 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
+        $request->validate(
+            [
+                'title' => 'required|min:3|max:40',
+                'description' => 'required|min:15|max:500',
+                'isbn' => 'required|min:13|max:20',
+                'pages' => 'required|min:1|max:5000',
+                'photo.*' => 'sometimes|required|mimes:jpg|max:10000',
+                'category_id' => 'required|numeric|gt:0',
+            ],
+            [
+                'category_id.gt' => 'Category not chosen.'
+            ]
+        );
+
         $book->update([
             'title' => $request->title,
             'isbn' => $request->isbn,

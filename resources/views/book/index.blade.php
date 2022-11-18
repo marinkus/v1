@@ -5,7 +5,7 @@
         <div class="row justify-contnent-center">
             <div class="col-8">
                 <div class="card-body">
-                    <h2>books List</h2>
+                    <h2>Books List:</h2>
                     <ul class="list-group">
                         @forelse($books as $book)
                             <li class="list-group-item">

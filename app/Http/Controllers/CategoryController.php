@@ -94,11 +94,19 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        if ($category->movies()->count()) {
-            return 'Negalima trinti';
+
+        if ($category->getBooks()->count()) {
+            return 'There is a books in a category';
         }
 
         $category->delete();
+        return redirect()->route('c_index');
+    }
+    public function destroyAll(Category $category)
+    {
+
+        $ids = $category->getBooks()->pluck('id')->all();
+        Book::destroy($ids);
         return redirect()->route('c_index');
     }
 }

@@ -6,7 +6,10 @@
             <div class="col-3 form-div mt-2">
                 <h2>Book</h2>
                 <h4 class="heading"><span class="small-text">Title: </span>{{ $book->title }}</h4>
-                <p class="description"><span class="small-text">Category: </span>{{ $book->getCategory->title }}</p>
+                <h6><span class="small-text">Category: </span>{{ $book->getCategory->title }}</h6>
+                <p class="small-text"> ISBN: {{ $book->isbn }}</p>
+                <p class="small-text"> Pages: {{ $book->pages }}</p>
+                <p class="description">{{ $book->description }}</p>
                 @forelse($book->getPhotos as $photo)
                     <img class="image" src="{{ $photo->url }}" alt="photo">
                 @empty

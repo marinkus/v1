@@ -48,6 +48,10 @@
                             </div>
                         @endforelse
                     </div>
+                    <div data-clone class="input-group mb-3">
+                        <span class="input-group-text">Photo</span>
+                        <input type="file" class="form-control" name="photo[]" multiple>
+                    </div>
 
                     <button type="submit" class="btn btn-primary mt-4">Update</button>
                 </form>

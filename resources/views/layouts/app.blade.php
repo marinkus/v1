@@ -80,12 +80,14 @@
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('c_index') }}"> List of
                                         categories</a>
-                                    <a class="dropdown-item" href="{{ route('c_create') }}"> Create category
-                                    </a>
                                     <a class="dropdown-item" href="{{ route('b_index') }}"> List of
                                         books</a>
+                                        @if (Auth::user()->role >= 7)
+                                    <a class="dropdown-item" href="{{ route('c_create') }}"> Create category
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('b_create') }}"> Create book
                                     </a>
+                                    @endif
                                 </div>
                             </li>
                         @endguest

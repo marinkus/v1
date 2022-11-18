@@ -22,13 +22,15 @@ class DatabaseSeeder extends Seeder
         $time = Carbon::now();
 
         DB::table('users')->insert([
-            'name' => 'bebras',
-            'email' => 'bebras@gmail.com',
+            'name' => 'user',
+            'email' => 'user@user.com',
+            'role' => 1,
             'password' => Hash::make('123'),
         ]);
         DB::table('users')->insert([
             'name' => 'dev',
             'email' => 'dev@dev.dev',
+            'role' => 10,
             'password' => Hash::make('dev'),
         ]);
 

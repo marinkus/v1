@@ -12,6 +12,17 @@
                 @empty
                     <p class="description">// Book has no images</p>
                 @endforelse
+                <div class="buttons">
+                    <a href="{{ route('b_show', $book) }}" type="button" class="btn btn-info">Show
+                        info</a>
+                    <a href="{{ route('b_edit', $book) }}" type="button" class="btn btn-warning">Edit
+                        info</a>
+                    <form action="{{ route('b_delete', $book) }}" method="post">
+                        @method('delete')
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
-use App\Http\Requests\StoreBookRequest;
-use App\Http\Requests\UpdateBookRequest;
+use App\Models\Category;
+use Illuminate\Http\Request;
+use App\Models\BookImage;
 
 class BookController extends Controller
 {
@@ -15,7 +16,9 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        return view('book.index', [
+            'books' => Book::orderBy('updated_at', 'desc')->get()
+        ]);
     }
 
     /**
@@ -25,18 +28,28 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        return view('book.create', [
+            'categories' => Category::all()
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreBookRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreBookRequest $request)
+    public function store(Request $request)
     {
-        //
+        Book::create([
+            'title' => $request->title,
+            'isbn' => $request->isbn,
+            'pages' => $request->pages,
+            'description' => $request->description,
+            'category_id' => $request->category_id
+        ])->addImages($request->file('photo'));
+
+        return redirect()->route('b_index')->with('ok', 'All Good!');
     }
 
     /**
@@ -47,7 +60,9 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        return view('book.show', [
+            'book' => $book
+        ]);
     }
 
     /**
@@ -58,19 +73,32 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        return view('book.edit', [
+            'book' => $book,
+            'categories' => Category::all()
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateBookRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateBookRequest $request, Book $book)
+    public function update(Request $request, Book $book)
     {
-        //
+        $book->update([
+            'title' => $request->title,
+            'isbn' => $request->isbn,
+            'pages' => $request->pages,
+            'description' => $request->description,
+            'category_id' => $request->category_id
+        ]);
+        $book->removeImages($request->delete_photo)
+            ->addImages($request->file('photo'));
+
+        return redirect()->route('b_index');
     }
 
     /**
@@ -81,6 +109,12 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        if ($book->getPhotos()->count()) {
+            $delIds = $book->getPhotos()->pluck('id')->all();
+            $book->removeImages($delIds);
+        }
+
+        $book->delete();
+        return redirect()->route('b_index');
     }
 }

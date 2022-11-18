@@ -71,19 +71,23 @@
                                     </form>
                                 </div>
                             </li>
-                            {{-- <li class="nav-item dropdown">
+                            <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    Admin panel
+                                    Menu
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('post_index') }}"> List of
-                                        posts</a>
-                                    <a class="dropdown-item" href="{{ route('post_create') }}"> Create post
+                                    <a class="dropdown-item" href="{{ route('c_index') }}"> List of
+                                        categories</a>
+                                    <a class="dropdown-item" href="{{ route('c_create') }}"> Create category
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('b_index') }}"> List of
+                                        books</a>
+                                    <a class="dropdown-item" href="{{ route('b_create') }}"> Create book
                                     </a>
                                 </div>
-                            </li> --}}
+                            </li>
                         @endguest
                     </ul>
                 </div>

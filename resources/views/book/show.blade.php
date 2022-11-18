@@ -5,10 +5,10 @@
         <div class="row">
             <div class="col-3 form-div mt-2">
                 <h2>Book</h2>
-                <h4 class="heading"><span class="small-text">Title: </span>{{ $book->title }}</h4>
-                <h6><span class="small-text">Category: </span>{{ $book->getCategory->title }}</h6>
-                <p class="small-text"> ISBN: {{ $book->isbn }}</p>
-                <p class="small-text"> Pages: {{ $book->pages }}</p>
+                <h4 class="heading">Title: {{ $book->title }}</h4>
+                <h6 class="catname">Category: {{ $book->getCategory->title }}</h6>
+                <p class="description"> ISBN: {{ $book->isbn }}</p>
+                <p class="description"> Pages: {{ $book->pages }}</p>
                 <p class="description">{{ $book->description }}</p>
                 @forelse($book->getPhotos as $photo)
                     <img class="image" src="{{ $photo->url }}" alt="photo">

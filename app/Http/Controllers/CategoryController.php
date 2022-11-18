@@ -104,7 +104,7 @@ class CategoryController extends Controller
     {
 
         if ($category->getBooks()->count()) {
-            return 'There is a books in a category';
+            return redirect()->back()->with('msg', 'There is a books in a category');
         }
 
         $category->delete();

@@ -20,7 +20,7 @@
                     <form action="{{ route('b_delete', $book) }}" method="post">
                         @method('delete')
                         @csrf
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-danger" @if (Auth::user()->role < 5) style="opacity: 0.4" disabled @endif>Delete</button>
                     </form>
                 </div>
             </div>
